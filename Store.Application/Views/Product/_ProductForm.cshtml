@@ -1,0 +1,29 @@
+﻿@model Store.Application.Models.Product.RegisterProductViewModel
+
+<form id="frm-products">
+    <input type="text" class="hidden" id="id" name="Id" />
+    <input type="text" class="hidden"  id="is-active" name="IsActive" value="true" />
+    <div class="form-row">
+        <div class="form-group col-lg-12 col-md-12">
+            <label class="font-weight-bold" for="Nome">Nome <span class="required">*</span></label>
+            <input type="text" id="name" class="form-control" maxlength="250" name="Name" required />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-lg-12 col-md-12">
+            <label class="font-weight-bold" for="Descricao">Descrição <span class="required">*</span></label>
+            <input type="text" id="description"  class="form-control" maxlength="250" name="Description" required />
+        </div>
+    </div>
+    <div class="form-row align-items-center">
+        <div class="form-group col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <label class="font-weight-bold" for="Categoria">Categoria <span class="required">*</span></label>
+            <select class="form-control" id="category" asp-for="CategoryProductId" asp-items=@Model.ProductsCategoriesSelectList name="CategoryProductId"></select>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 pt-4">
+            <div class="form-check">
+                <input type="checkbox" id="is-perishable" class="form-check-input" name="IsPerishable" value="true" /> <span class="font-weight-bold">Perecível?</span>
+            </div>
+        </div>
+    </div>
+</form> 
