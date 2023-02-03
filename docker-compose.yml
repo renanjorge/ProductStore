@@ -1,0 +1,38 @@
+version: '3.4'
+
+networks:
+  storenetwork:
+    name: storenetwork
+    driver: bridge
+
+services:
+  store.database:
+    container_name: productstoredb
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+        - 1433:1433
+    environment:
+        - ACCEPT_EULA=Y
+        - MSSQL_SA_PASSWORD=Password#123
+    networks:
+        - storenetwork
+  store.application:
+    container_name: productstoreapp
+    image: ${DOCKER_REGISTRY-}storeapplication
+    build:
+      context: .
+      dockerfile: Store.Application/Dockerfile
+    ports:
+        - 5000:80
+        - 5001:443
+    depends_on:
+        - store.database
+    environment:
+        - DB_HOST=store.database
+        - DB_PORT=1433
+        - DB_NAME=produtostore
+        - DB_USER=sa
+        - DB_SA_PASSWORD=Password#123
+        - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+        - storenetwork

@@ -14,6 +14,7 @@ namespace Store.Infra.Data.Repository
         public IList<Product> SelectWith(int skip, int take)
         {
             return DbSet.Include(c => c.ProductCategory)
+                        .AsNoTracking()
                         .OrderByDescending(c => c.Id)
                         .Skip(skip)
                         .Take(take)

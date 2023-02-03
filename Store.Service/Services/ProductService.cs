@@ -2,7 +2,6 @@
 using Store.Domain.Interfaces.Repositories;
 using Store.Domain.Interfaces.Services;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Store.Service.Services
 {

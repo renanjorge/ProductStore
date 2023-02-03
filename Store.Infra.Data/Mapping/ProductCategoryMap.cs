@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Store.Domain.Entities;
+using Store.Infra.Data.Extensions.Seeds;
+using System.Collections.Generic;
 
 namespace Store.Infra.Data.Mapping
 {
@@ -28,6 +30,8 @@ namespace Store.Infra.Data.Mapping
                    .IsRequired()
                    .HasColumnName("Ativo")
                    .HasColumnType("bit");
+
+            builder.Seed();
         }
     }
 }

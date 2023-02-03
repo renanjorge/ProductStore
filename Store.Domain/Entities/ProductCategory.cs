@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace Store.Domain.Entities
+﻿namespace Store.Domain.Entities
 {
     public class ProductCategory
     {
         public int Id { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }

@@ -25,9 +25,9 @@ namespace Store.Infra.Data.Mapping
                    .HasMaxLength(250);
 
             builder.Property(c => c.IsActive)
-                  .IsRequired()
-                  .HasColumnName("Ativo")
-                  .HasColumnType("bit");
+                   .IsRequired()
+                   .HasColumnName("Ativo")
+                   .HasColumnType("bit");
 
             builder.Property(c => c.IsPerishable)
                    .IsRequired()
@@ -36,7 +36,8 @@ namespace Store.Infra.Data.Mapping
 
             builder.HasOne(c => c.ProductCategory)
                    .WithMany()
-                   .IsRequired();               
+                   .OnDelete(DeleteBehavior.NoAction)
+                   .IsRequired();
         }
     }
 }
